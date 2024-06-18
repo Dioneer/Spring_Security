@@ -5,6 +5,8 @@ import pegas.entity.Task;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public class TaskRepositoryImpl implements TaskRepository{
@@ -20,5 +22,10 @@ public class TaskRepositoryImpl implements TaskRepository{
     @Override
     public void save(Task task) {
         tasks.add(task);
+    }
+
+    @Override
+    public Optional<Task> findById(UUID id) {
+        return tasks.stream().filter(i->i.id()==id).findFirst();
     }
 }
