@@ -11,5 +11,5 @@ public interface TaskRepository {
 
      void save(Task task);
 
-     Optional<Task> findById(UUID id);
+     Optional<Task> findById(Integer id);
 }

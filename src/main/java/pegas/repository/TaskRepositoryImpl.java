@@ -25,7 +25,7 @@ public class TaskRepositoryImpl implements TaskRepository{
     }
 
     @Override
-    public Optional<Task> findById(UUID id) {
+    public Optional<Task> findById(Integer id) {
         return tasks.stream().filter(i->i.id()==id).findFirst();
     }
 }

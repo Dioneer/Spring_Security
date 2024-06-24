@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import pegas.dto.CreateUpdateTask;
@@ -29,6 +30,7 @@ public class TaskRestController {
     }
 
     @PostMapping
+    @Transactional
     public ResponseEntity<?> createTask(@RequestBody CreateUpdateTask create,
                                            UriComponentsBuilder uriComponentsBuilder, Locale locale){
         if(create.details()==null || create.details().isBlank()){
@@ -46,7 +48,7 @@ public class TaskRestController {
         }
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Task> findById(@PathVariable("id") UUID id){
+    public ResponseEntity<Task> findById(@PathVariable("id") Integer id){
         return ResponseEntity.of(taskRepository.findById(id));
 
     }

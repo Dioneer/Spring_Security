@@ -36,9 +36,9 @@ public class TaskRestControllerTest {
 
     @Test
     void handleGetAllTaskTest(){
-        var tasks = List.of(new Task(UUID.randomUUID(), "1111", false),
-                new Task(UUID.randomUUID(), "222", false),
-                new Task(UUID.randomUUID(), "333", true));
+        var tasks = List.of(new Task(1, "1111", false),
+                new Task(2, "222", false),
+                new Task(3, "333", true));
         Mockito.doReturn(tasks).when(taskRepository).findAll();
         var result = taskRestController.handleGetAllTask();
         assertNotNull(result);
