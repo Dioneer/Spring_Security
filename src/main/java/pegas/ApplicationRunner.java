@@ -13,14 +13,21 @@ public class ApplicationRunner {
         var context = SpringApplication.run(ApplicationRunner.class,args);
     }
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        http.csrf(CsrfConfigurer::disable)
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+////        http.csrf(CsrfConfigurer::disable)
+////                .sessionManagement(j->j.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+////        return http.build();
+//        http.httpBasic(basic-> basic.realmName("chicago"))
+//                .authorizeHttpRequests(customizer -> customizer.anyRequest().authenticated())
 //                .sessionManagement(j->j.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 //        return http.build();
-        http.httpBasic(basic-> basic.realmName("chicago"))
-                .authorizeHttpRequests(customizer -> customizer.anyRequest().authenticated())
-                .sessionManagement(j->j.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+//    }
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+        http.httpBasic(i->i.realmName("start"))
+                .authorizeHttpRequests(j->j.anyRequest().authenticated())
+                .sessionManagement(i->i.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         return http.build();
     }
 }
