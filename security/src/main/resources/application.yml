@@ -1,0 +1,6 @@
+spring:
+  security:
+    user:
+      password: password
+  datasource:
+    url: jdbc:tc:postgresql:14:///sandbox?TC_DAEMON=true

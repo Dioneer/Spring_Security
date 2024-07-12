@@ -21,7 +21,8 @@ public class GreetingRestController {
         return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON)
                 .body(Map.of("greeting", "Hello1, %s".formatted(user.getUsername())));
     }
-    @GetMapping("/api/v2/greetings")
+    @GetMapping("" +
+            "")
     public ResponseEntity<Map<String, String>> getGreetingsV2(HttpServletRequest request){
         UserDetails user = (UserDetails) ((Authentication)request.getUserPrincipal()).getPrincipal();
         return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON)
